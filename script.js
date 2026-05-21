@@ -31,3 +31,15 @@ function prevSlide() {
 
   showSlide(slideIndex);
 }
+window.addEventListener('scroll', function () {
+  const navbar = document.getElementById('mainNavbar');
+  
+  // If user scrolls down past 50px, add the blue class. Otherwise, remove it.
+  if (window.scrollY > 50) {
+    navbar.classList.add('navbar-scrolled');
+    navbar.classList.remove('bg-transparent');
+  } else {
+    navbar.classList.remove('navbar-scrolled');
+    navbar.classList.add('bg-transparent');
+  }
+});

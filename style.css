@@ -2,7 +2,7 @@ body {
   margin: 0;
   background-color: #fdfffe;
   color: #222;
-  font-family: "Poppins", sans-serif;
+  font-family: "Times New Roman'", Times, sans-serif;
   
 }
 
@@ -176,7 +176,7 @@ select {
     align-items: center;
     border-radius: 1px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    width: 400px;
+    width: 350px;
 
 }
 .wrap_a{
@@ -220,4 +220,92 @@ select {
   display: flex;
   justify-content: center;
   gap: 30px;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.buy{
+  display: flex;
+}
+
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+
+.navbar-scrolled {
+
+  background-color: rgba(255, 255, 255, 0.7) !important; 
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-brand,
+.navbar-scrolled .material-symbols-rounded {
+  color: #000000 !important;
+}
+.navbar-scrolled .navbar-toggler-icon {
+  filter: invert(0) !important; 
+}
+.navbar-scrolled .navbar-toggler {
+  border-color: #ffffff !important;
+}
+
+
+@media (max-width: 991.98px) {
+  .mobile-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 280px;
+    background-color: #ffffff; 
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    display: block !important;
+    padding: 80px 24px 24px 24px;
+    z-index: 999;
+  }
+  .mobile-sidebar.show {
+    right: 0;
+  }
+  
+  .mobile-sidebar .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .mobile-sidebar .d-flex {
+    justify-content: flex-start;
+    margin-top: 2rem !important;
+  }
+}
+.deal-hero {
+  background-image: url('https://img.magnific.com/free-photo/caucasian-male-with-appeal-look-smiling-broadly-with-white-even-teeth-posing-indoors-stylish-handsome-attractive-man-with-trendy-haircut-dressed-black-leather-jacket-with-sunglasses_176420-13365.jpg?t=st=1779348835~exp=1779352435~hmac=e3496a055bede6361671a8b5a1465a35809ba54797c28cc9103149b46a545db2&w=1480');
+  background-attachment: fixed;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  height: 1000px;
+  width: 100%;
+
+}
+
+.deal-card {
+  background-color: rgb(255, 255, 255) 
+@media (max-width: 768px) {
+  .deal-hero {
+    background-attachment: scroll;
+    background-size: cover;
+    min-height: 400px;
+  }
 }
