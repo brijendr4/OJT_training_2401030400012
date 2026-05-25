@@ -1,0 +1,231 @@
+ :root {
+            --bg-color: #e0e8f6;
+            --text-color: #3a4255;
+            --text-light: #737f9c;
+            --error-color: #dc3545;
+            --success-color: #198754;
+            
+            /* Neumorphic Soft Shadow Specs */
+            --neu-flat: 12px 12px 24px #bec7d6, -12px -12px 24px #ffffff;
+            --neu-inset: inset 6px 6px 12px #c2ccd6, inset -6px -6px 12px #ffffff;
+            --neu-btn: 6px 6px 12px #c2ccd6, -6px -6px 12px #ffffff;
+            --neu-btn-active: inset 4px 4px 8px #c2ccd6, inset -4px -4px 8px #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        /* Neumorphic Form Card */
+        .login-card {
+            background-color: var(--bg-color);
+            border-radius: 30px;
+            box-shadow: 20px 20px 60px #bec7d6, -20px -20px 60px #ffffff !important;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* Header Icon */
+        .neu-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            box-shadow: var(--neu-flat);
+            color: var(--text-color);
+        }
+
+        /* Custom Inset Inputs mapped over Bootstrap structural groups */
+        .neu-input-wrapper {
+            position: relative;
+        }
+
+        .neu-input-wrapper input {
+            width: 100%;
+            padding: 16px 16px 16px 50px !important;
+            border: none;
+            outline: none;
+            background: var(--bg-color);
+            border-radius: 16px;
+            box-shadow: var(--neu-inset);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            height: auto;
+        }
+
+        .neu-input-wrapper input:focus {
+            background: var(--bg-color);
+            box-shadow: var(--neu-inset);
+            outline: none;
+        }
+
+        /* Dynamic Floating Labels */
+        .neu-input-wrapper label {
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            pointer-events: none;
+            transition: all 0.25s ease;
+            margin: 0;
+            padding: 0;
+        }
+
+        .neu-input-wrapper input:focus ~ label,
+        .neu-input-wrapper input:not(:placeholder-shown) ~ label {
+            transform: translateY(-170%) scale(0.85);
+            left: 15px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        /* Password Show Toggle */
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--bg-color);
+            border: none;
+            cursor: pointer;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            box-shadow: var(--neu-btn);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            z-index: 5;
+        }
+
+        .password-toggle:active {
+            box-shadow: var(--neu-btn-active);
+        }
+
+        .password-toggle .eye-closed { display: none; }
+        .password-toggle.show-pass .eye-open { display: none; }
+        .password-toggle.show-pass .eye-closed { display: block; }
+
+        /* Custom Neumorphic Checkbox */
+        .remember-wrapper input[type="checkbox"] {
+            display: none;
+        }
+
+        .neu-checkbox {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            box-shadow: var(--neu-inset);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: transparent;
+            transition: color 0.2s ease;
+            vertical-align: middle;
+        }
+
+        .remember-wrapper input[type="checkbox"]:checked + label .neu-checkbox {
+            color: var(--text-color);
+        }
+
+        /* Custom Neumorphic Buttons */
+        .neu-btn-primary {
+            background: var(--bg-color);
+            border: none;
+            border-radius: 16px;
+            box-shadow: var(--neu-btn);
+            color: var(--text-color);
+            font-weight: 700;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .neu-btn-primary:hover, .neu-btn-primary:focus {
+            background: var(--bg-color);
+            color: var(--text-color);
+            box-shadow: var(--neu-btn);
+        }
+
+        .neu-btn-primary:active {
+            box-shadow: var(--neu-btn-active) !important;
+            transform: scale(0.99);
+        }
+
+        .neu-btn-social {
+            width: 55px;
+            height: 55px;
+            border: none;
+            border-radius: 14px;
+            background: var(--bg-color);
+            box-shadow: var(--neu-btn);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color);
+            transition: all 0.2s ease;
+        }
+
+        .neu-btn-social:active, .neu-btn-social:focus {
+            box-shadow: var(--neu-btn-active) !important;
+            background: var(--bg-color);
+        }
+
+        /* Neumorphic Divider Custom Layer */
+        .divider-line {
+            flex: 1;
+            height: 3px;
+            background: var(--bg-color);
+            box-shadow: inset 1px 1px 2px #b0bbc7, inset -1px -1px 2px #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Functional Loader Transitions */
+        .btn-loader { display: none; }
+        .neu-button.loading .btn-text { display: none; }
+        .neu-button.loading .btn-loader { display: inline-block; }
+
+        /* Screen-overlay Dynamic Success Panel */
+        .success-message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+
+        .success-message.show {
+            transform: translateY(0);
+        }
+
+        .success-icon {
+            color: var(--success-color);
+            box-shadow: inset 4px 4px 8px #c2ccd6, inset -4px -4px 8px #ffffff;
+        }
