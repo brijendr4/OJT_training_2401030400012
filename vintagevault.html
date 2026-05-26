@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Vintage Vault — Rare Finds, Timeless Pieces</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment:    '#f2e8d5',
+            'parchment-dk': '#e8d9bc',
+            sepia:        '#c8a96e',
+            'sepia-dk':   '#9c7a3c',
+            mahogany:     '#3d1f0d',
+            'mahogany-lt':'#5c2e12',
+            ink:          '#1a0f05',
+            rust:         '#8b3a1a',
+            'aged-white': '#faf6ee',
+            muted:        '#7a6548',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            serif:   ['"Libre Baskerville"', 'serif'],
+            sans:    ['"Josefin Sans"', 'sans-serif'],
+          },
+          letterSpacing: {
+            widest2: '0.22em',
+            widest3: '0.35em',
+            widest4: '0.18em',
+          },
+        }
+      }
+    }
+  </script>
+  
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ANNOUNCEMENT BAR — Tailwind -->
+  <div class="bg-mahogany text-parchment text-center px-5 py-[10px] font-sans text-[0.68rem] tracking-[0.22em] uppercase">
+    Free Shipping on Orders Over $150
+    <span class="text-sepia mx-3">◆</span>
+    Authenticated Vintage Pieces
+    <span class="text-sepia mx-3">◆</span>
+    30-Day Returns
+  </div>
+
+  <!-- NAV — Tailwind -->
+  <nav class="bg-aged-white border-b border-[rgba(61,31,13,0.15)] sticky top-0 z-[100]">
+
+    <!-- NAV TOP -->
+    <div class="flex items-center justify-between px-[60px] py-5 border-b border-[rgba(61,31,13,0.15)]">
+
+      <!-- Search -->
+      <div class="flex items-center gap-[10px] flex-1">
+        <div class="flex items-center gap-2 border border-[rgba(61,31,13,0.15)] px-[14px] py-[7px] bg-parchment">
+          <svg class="w-[15px] h-[15px] stroke-muted fill-none" style="stroke-width:1.8" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input
+            type="text"
+            placeholder="Search vintage finds..."
+            class="border-none bg-transparent font-sans text-[0.78rem] text-ink outline-none w-[180px] tracking-[0.05em] placeholder-muted"
+          />
+        </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="text-center flex-1">
+        <a href="#" class="font-display text-[2.1rem] font-black text-mahogany no-underline tracking-[0.06em] block leading-none">
+          The Vintage Vault
+        </a>
+        <small class="block font-sans text-[0.58rem] tracking-[0.35em] uppercase text-sepia mt-1">
+          Est. 1987 — Curated Antiques &amp; Collectibles
+        </small>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-6 flex-1 justify-end">
+        <a href="#" class="nav-icon flex flex-col items-center gap-[3px] font-sans text-[0.58rem] tracking-[0.12em] uppercase text-muted no-underline">
+          <svg class="w-5 h-5 stroke-current fill-none" style="stroke-width:1.5" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          Account
+        </a>
+        <a href="#" class="nav-icon flex flex-col items-center gap-[3px] font-sans text-[0.58rem] tracking-[0.12em] uppercase text-muted no-underline">
+          <svg class="w-5 h-5 stroke-current fill-none" style="stroke-width:1.5" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          Saved
+        </a>
+        <a href="#" class="nav-icon cart-badge flex flex-col items-center gap-[3px] font-sans text-[0.58rem] tracking-[0.12em] uppercase text-muted no-underline">
+          <svg class="w-5 h-5 stroke-current fill-none" style="stroke-width:1.5" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          Basket
+        </a>
+      </div>
+    </div>
+
+    <!-- NAV BOTTOM -->
+    <div class="hidden md:flex items-center justify-center">
+      <a href="#" class="nav-bottom-link active font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-l border-[rgba(61,31,13,0.15)]">
+        New Arrivals
+      </a>
+      <a href="#" class="nav-bottom-link font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-[rgba(61,31,13,0.15)]">Furniture</a>
+      <a href="#" class="nav-bottom-link font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-[rgba(61,31,13,0.15)]">Jewellery</a>
+      <a href="#" class="nav-bottom-link font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-[rgba(61,31,13,0.15)]">Ceramics</a>
+      <a href="#" class="nav-bottom-link font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-[rgba(61,31,13,0.15)]">Textiles</a>
+      <a href="#" class="nav-bottom-link font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-[rgba(61,31,13,0.15)]">Art &amp; Prints</a>
+      <a href="#" class="nav-bottom-link font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-[rgba(61,31,13,0.15)]">Books &amp; Maps</a>
+      <a href="#" class="nav-bottom-link font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-[rgba(61,31,13,0.15)]">Curiosities</a>
+      <a href="#" class="nav-bottom-link font-sans text-[0.72rem] tracking-[0.18em] uppercase text-mahogany no-underline px-7 py-[13px] border-r border-[rgba(61,31,13,0.15)]">Sale</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-side">
+      <div class="side-label">Trending Now</div>
+      <div class="side-product">
+        <div class="side-img">◇</div>
+        <div class="era">1920s Art Deco</div>
+        <h4>Brass Mantel Clock</h4>
+        <div class="price">$340</div>
+      </div>
+      <div class="side-product">
+        <div class="side-img alt">△</div>
+        <div class="era">1950s Mid-Century</div>
+        <h4>Walnut Side Table</h4>
+        <div class="price">$485</div>
+      </div>
+    </div>
+
+    <div class="hero-center">
+      <div class="hero-bg-pattern"></div>
+      <svg class="hero-ornament" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <rect x="10" y="10" width="180" height="180" stroke="#c8a96e" stroke-width="0.5"/>
+        <rect x="20" y="20" width="160" height="160" stroke="#c8a96e" stroke-width="0.3"/>
+        <circle cx="100" cy="100" r="70" stroke="#c8a96e" stroke-width="0.4"/>
+        <path d="M10 10 L100 100 M190 10 L100 100 M10 190 L100 100 M190 190 L100 100" stroke="#c8a96e" stroke-width="0.3"/>
+      </svg>
+
+      <div class="hero-badge">Newly Authenticated Collection</div>
+      <h1>Where History<br/>Finds a <em>New Home</em></h1>
+      <p>Each piece in our vault is hand-selected, authenticated, and cared for — a story waiting to continue in your home.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-vintage">Shop the Vault</a>
+        <a href="#" class="btn-outline-lt">Our Story</a>
+      </div>
+      <div class="hero-scroll">Scroll</div>
+    </div>
+
+    <div class="hero-side">
+      <div class="side-label">Just Arrived</div>
+      <div class="side-product">
+        <div class="side-img alt2">○</div>
+        <div class="era">1970s Bohemian</div>
+        <h4>Rattan Peacock Chair</h4>
+        <div class="price">$620</div>
+      </div>
+      <div class="side-product">
+        <div class="side-img">◈</div>
+        <div class="era">1940s Victorian</div>
+        <h4>Silverplate Tea Set</h4>
+        <div class="price">$290</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <b>New Arrivals</b><span>✦</span> <b>Art Deco Furniture</b><span>✦</span> <b>Victorian Silverware</b><span>✦</span> <b>Mid-Century Modern</b><span>✦</span> <b>Bohemian Textiles</b><span>✦</span> <b>Rare Ceramics</b><span>✦</span> <b>Antique Maps</b><span>✦</span> <b>Edwardian Jewellery</b><span>✦</span>
+      <b>New Arrivals</b><span>✦</span> <b>Art Deco Furniture</b><span>✦</span> <b>Victorian Silverware</b><span>✦</span> <b>Mid-Century Modern</b><span>✦</span> <b>Bohemian Textiles</b><span>✦</span> <b>Rare Ceramics</b><span>✦</span> <b>Antique Maps</b><span>✦</span> <b>Edwardian Jewellery</b><span>✦</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="categories sec">
+    <div class="sec-label reveal">Browse by Era</div>
+    <h2 class="sec-title reveal">Explore the <em>Collection</em></h2>
+    <p class="sec-sub reveal">Over a century of design history, curated into five defining eras.</p>
+    <div class="cat-grid">
+      <a href="#" class="cat-item reveal">
+        <div class="cat-bg"></div>
+        <div class="cat-overlay"></div>
+        <div class="cat-icon">◆</div>
+        <div class="cat-info">
+          <h3>Victorian</h3>
+          <span>1837 – 1901</span>
+        </div>
+      </a>
+      <a href="#" class="cat-item reveal">
+        <div class="cat-bg"></div>
+        <div class="cat-overlay"></div>
+        <div class="cat-icon">◇</div>
+        <div class="cat-info">
+          <h3>Art Deco</h3>
+          <span>1920s – 1930s</span>
+        </div>
+      </a>
+      <a href="#" class="cat-item reveal">
+        <div class="cat-bg"></div>
+        <div class="cat-overlay"></div>
+        <div class="cat-icon">△</div>
+        <div class="cat-info">
+          <h3>Mid-Century</h3>
+          <span>1940s – 1960s</span>
+        </div>
+      </a>
+      <a href="#" class="cat-item reveal">
+        <div class="cat-bg"></div>
+        <div class="cat-overlay"></div>
+        <div class="cat-icon">○</div>
+        <div class="cat-info">
+          <h3>Bohemian</h3>
+          <span>1960s – 1970s</span>
+        </div>
+      </a>
+      <a href="#" class="cat-item reveal">
+        <div class="cat-bg"></div>
+        <div class="cat-overlay"></div>
+        <div class="cat-icon">◈</div>
+        <div class="cat-info">
+          <h3>Retro Modern</h3>
+          <span>1980s – 1990s</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products sec">
+    <div class="sec-label reveal">Hand-Picked Pieces</div>
+    <h2 class="sec-title reveal">Featured <em>Finds</em></h2>
+    <p class="sec-sub reveal">Each item authenticated, restored where needed, and ready to become part of your story.</p>
+
+    <div class="products-controls reveal">
+      <div class="filter-tabs">
+        <button class="active">All</button>
+        <button>Furniture</button>
+        <button>Jewellery</button>
+        <button>Ceramics</button>
+        <button>Art</button>
+      </div>
+      <select class="sort-select">
+        <option>Sort: Newest First</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Era: Oldest First</option>
+      </select>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-img">◆
+          <div class="product-badges"><span class="badge badge-rare">Rare</span></div>
+          <button class="product-wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="product-quick">Add to Basket</button>
+        </div>
+        <div class="product-info">
+          <div class="product-era">1920s · Art Deco</div>
+          <h3>Gilt Bronze Mantel Clock</h3>
+          <div class="product-meta">
+            <div class="product-price">$480</div>
+            <span class="product-cond">Excellent</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img">◇
+          <div class="product-badges"><span class="badge badge-new">New In</span></div>
+          <button class="product-wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="product-quick">Add to Basket</button>
+        </div>
+        <div class="product-info">
+          <div class="product-era">1950s · Mid-Century</div>
+          <h3>Danish Teak Sideboard</h3>
+          <div class="product-meta">
+            <div class="product-price">$1,240</div>
+            <span class="product-cond">Good</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img">△
+          <div class="product-badges"><span class="badge badge-sale">Sale</span></div>
+          <button class="product-wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="product-quick">Add to Basket</button>
+        </div>
+        <div class="product-info">
+          <div class="product-era">1890s · Victorian</div>
+          <h3>Sterling Silver Brooch</h3>
+          <div class="product-meta">
+            <div class="product-price"><s>$220</s>$165</div>
+            <span class="product-cond">Very Good</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img">○
+          <button class="product-wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="product-quick">Add to Basket</button>
+        </div>
+        <div class="product-info">
+          <div class="product-era">1970s · Bohemian</div>
+          <h3>Handwoven Kilim Rug</h3>
+          <div class="product-meta">
+            <div class="product-price">$395</div>
+            <span class="product-cond">Good</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img">◈
+          <div class="product-badges"><span class="badge badge-rare">Rare</span></div>
+          <button class="product-wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="product-quick">Add to Basket</button>
+        </div>
+        <div class="product-info">
+          <div class="product-era">1930s · Art Deco</div>
+          <h3>Bakelite Telephone</h3>
+          <div class="product-meta">
+            <div class="product-price">$310</div>
+            <span class="product-cond">Excellent</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img">◆
+          <div class="product-badges"><span class="badge badge-new">New In</span></div>
+          <button class="product-wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="product-quick">Add to Basket</button>
+        </div>
+        <div class="product-info">
+          <div class="product-era">1960s · Mid-Century</div>
+          <h3>Murano Glass Vase</h3>
+          <div class="product-meta">
+            <div class="product-price">$560</div>
+            <span class="product-cond">Mint</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img">◇
+          <button class="product-wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="product-quick">Add to Basket</button>
+        </div>
+        <div class="product-info">
+          <div class="product-era">1910s · Edwardian</div>
+          <h3>Watercolour Botanical Print</h3>
+          <div class="product-meta">
+            <div class="product-price">$175</div>
+            <span class="product-cond">Good</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img">△
+          <div class="product-badges"><span class="badge badge-sale">Sale</span></div>
+          <button class="product-wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="product-quick">Add to Basket</button>
+        </div>
+        <div class="product-info">
+          <div class="product-era">1880s · Victorian</div>
+          <h3>Carved Mahogany Mirror</h3>
+          <div class="product-meta">
+            <div class="product-price"><s>$680</s>$495</div>
+            <span class="product-cond">Very Good</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="products-footer reveal">
+      <a href="#" class="btn-outline-dk">View All 240+ Pieces</a>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="banner reveal">
+    <div class="banner-left">
+      <div class="banner-ornament"></div>
+      <div class="banner-tag">The Vault Collection</div>
+      <h2>Furniture from<br/>another <em>era</em></h2>
+      <p>Our furniture collection spans five decades of iconic design — from Art Deco grandeur to the clean lines of Mid-Century Modernism. Each piece tells a story.</p>
+      <a href="#" class="btn-vintage">Shop Furniture</a>
+    </div>
+    <div class="banner-right">
+      <div class="banner-img-item">◆<span class="banner-img-label">Armchairs</span></div>
+      <div class="banner-img-item">◇<span class="banner-img-label">Tables</span></div>
+      <div class="banner-img-item">△<span class="banner-img-label">Cabinets</span></div>
+      <div class="banner-img-item">○<span class="banner-img-label">Lighting</span></div>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-grid">
+      <div class="trust-item reveal">
+        <div class="trust-icon">✦</div>
+        <div>
+          <h4>Expert Authentication</h4>
+          <p>Every piece verified by our in-house historians and appraisers</p>
+        </div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-icon">◎</div>
+        <div>
+          <h4>Careful Packaging</h4>
+          <p>Museum-grade wrapping on all fragile and valuable items</p>
+        </div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-icon">◇</div>
+        <div>
+          <h4>30-Day Returns</h4>
+          <p>Not quite right? Return it within 30 days, no questions asked</p>
+        </div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-icon">△</div>
+        <div>
+          <h4>Provenance Included</h4>
+          <p>Full documented history supplied with every purchase</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials sec">
+    <div class="sec-label reveal">What Collectors Say</div>
+    <h2 class="sec-title reveal">Trusted by <em>thousands</em></h2>
+    <p class="sec-sub reveal">From first-time buyers to seasoned collectors — here's what they found in the Vault.</p>
+    <div class="testimonials-grid">
+      <div class="tcard reveal">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"The 1920s brass clock I purchased is the centrepiece of my study. The provenance documentation made it feel like I was holding history in my hands."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">E</div>
+          <div class="tcard-info">
+            <strong>Eleanor Hartley</strong>
+            <span>London, UK</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"I've bought from many vintage dealers online. The Vintage Vault is in a different class entirely — the photography, the descriptions, the care in shipping."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">M</div>
+          <div class="tcard-info">
+            <strong>Marcus Webb</strong>
+            <span>New York, USA</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Returned a piece without any hassle — and they helped me find exactly what I was looking for instead. That kind of service is rare anywhere, let alone online."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">S</div>
+          <div class="tcard-info">
+            <strong>Saoirse Malone</strong>
+            <span>Dublin, Ireland</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="sec-label reveal">Stay in the Know</div>
+    <h2 class="reveal">First to see the <em>finest finds</em></h2>
+    <p class="reveal">Join our collector's circle and receive early access to new arrivals, private sales, and stories behind the pieces.</p>
+    <div class="email-form reveal">
+      <input type="email" placeholder="Your email address" />
+      <button>Subscribe</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo">The Vintage Vault<span>.</span></span>
+        <div class="tagline">Est. 1987 — Curated Antiques & Collectibles</div>
+        <p>Specialists in authenticated vintage and antique pieces. Every item is hand-picked, documented, and delivered with care.</p>
+        <div class="footer-socials">
+          <a href="#">In</a>
+          <a href="#">Ig</a>
+          <a href="#">Fb</a>
+          <a href="#">Pt</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Furniture</a></li>
+          <li><a href="#">Jewellery</a></li>
+          <li><a href="#">Ceramics & Glass</a></li>
+          <li><a href="#">Art & Prints</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns Policy</a></li>
+          <li><a href="#">Authentication</a></li>
+          <li><a href="#">Condition Guide</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>The Vault</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Meet the Team</a></li>
+          <li><a href="#">Sell With Us</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Journal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 The Vintage Vault. All rights reserved. | Privacy Policy | Terms of Service</p>
+      <div class="footer-payments">
+        <span class="pay-badge">Visa</span>
+        <span class="pay-badge">MC</span>
+        <span class="pay-badge">Amex</span>
+        <span class="pay-badge">PayPal</span>
+        <span class="pay-badge">Klarna</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+    function animateRing() { rx += (mx-rx)*0.12; ry += (my-ry)*0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animateRing); }
+    animateRing();
+
+    // Scroll reveal
+    const els = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e,i) => {
+        if (e.isIntersecting) {
+          e.target.style.transitionDelay = (i % 5) * 0.07 + 's';
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(el => obs.observe(el));
+
+    // Filter tabs
+    document.querySelectorAll('.filter-tabs button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-tabs button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
