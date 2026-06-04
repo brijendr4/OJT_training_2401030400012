@@ -9,6 +9,11 @@ lerna-debug.log*
 
 node_modules
 dist
+
+# Environment variables — never commit these
+.env
+.env.local
+.env.production
 dist-ssr
 *.local
 

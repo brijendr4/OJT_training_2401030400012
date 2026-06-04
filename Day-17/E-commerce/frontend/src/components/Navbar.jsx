@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
-import { FaSearch, FaShoppingBag, FaUser, FaSignOutAlt, FaBars, FaTimes, FaBook, FaPlus } from 'react-icons/fa'
+import { FaSearch, FaShoppingBag, FaUser, FaSignOutAlt, FaBars, FaTimes, FaPlus, FaClipboardList } from 'react-icons/fa'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -26,14 +26,14 @@ export default function Navbar() {
       <nav id="navbar-main" aria-label="Primary navigation" className="navbar navbar-main navbar-expand-lg navbar-theme-primary navbar-light py-4">
         <div className="container-main flex items-center justify-between">
           
-          {/* Logo brand box exactly like Themesberg */}
+          {/* Logo */}
           <Link to="/" className="navbar-brand shadow-soft py-2.5 px-4 rounded border border-light mr-lg-4 no-underline inline-flex items-center gap-2 bg-primary">
             <span className="font-black text-sm uppercase tracking-widest text-zinc-800 font-mono">
               FASHION<span className="text-zinc-500 font-normal">&FREEDOM</span>
             </span>
           </Link>
 
-          {/* Menu links wrapper */}
+          {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-4">
             <Link to="/" className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-650 hover:text-zinc-900 no-underline transition-colors">
               Home
@@ -44,16 +44,21 @@ export default function Navbar() {
             <Link to="/products?featured=true" className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-650 hover:text-zinc-900 no-underline transition-colors">
               Trending
             </Link>
+            {user && (
+              <Link to="/orders" className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-650 hover:text-zinc-900 no-underline transition-colors flex items-center gap-1.5">
+                <FaClipboardList className="text-[10px]" /> My Orders
+              </Link>
+            )}
           </div>
 
-          {/* Right side buttons & controls */}
+          {/* Right side controls */}
           <div className="flex items-center gap-3">
             
             {/* Search */}
             <button 
               onClick={() => setSearchOpen(!searchOpen)}
               className="btn btn-icon-only btn-primary"
-              aria-label="Search button"
+              aria-label="Toggle search"
             >
               <FaSearch className="text-xs" />
             </button>
@@ -62,27 +67,32 @@ export default function Navbar() {
             <Link 
               to="/cart" 
               className="btn btn-icon-only btn-primary relative no-underline"
-              aria-label="Cart button"
+              aria-label={`Cart — ${count} item${count !== 1 ? 's' : ''}`}
             >
               <FaShoppingBag className="text-xs" />
               {count > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 w-5 h-5 flex items-center justify-center text-[9px] font-black text-white rounded-full bg-zinc-800 border border-[#e6e8ec] shadow">
-                  {count}
+                  {count > 99 ? '99+' : count}
                 </span>
               )}
             </Link>
 
-            {/* User credentials */}
+            {/* User section (desktop) */}
             {user ? (
               <div className="hidden md:flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black text-zinc-800 shadow-soft border border-white/50 bg-primary font-mono">
+                {/* User avatar */}
+                <Link
+                  to="/orders"
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black text-zinc-800 shadow-soft border border-white/50 bg-primary font-mono no-underline"
+                  title={`${user.name} — View Orders`}
+                >
                   {user.name?.charAt(0).toUpperCase() || 'U'}
-                </div>
-                
+                </Link>
                 <button 
                   onClick={logout}
                   className="btn btn-icon-only btn-primary text-red-500 hover:text-red-600"
                   aria-label="Logout"
+                  title="Logout"
                 >
                   <FaSignOutAlt className="text-xs" />
                 </button>
@@ -98,11 +108,12 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Mobile toggler */}
+            {/* Mobile menu toggle */}
             <button 
               onClick={() => setOpen(!open)}
               className="btn btn-icon-only btn-primary md:hidden ml-2"
-              aria-label="Toggle navigation"
+              aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={open}
             >
               {open ? <FaTimes className="text-xs" /> : <FaBars className="text-xs" />}
             </button>
@@ -110,16 +121,18 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Search inline dropdown box */}
+        {/* Search bar dropdown */}
         {searchOpen && (
           <div className="container-main mt-4 animate-fade-in">
             <div className="shadow-inset p-4 rounded-2xl bg-primary">
-              <form onSubmit={handleSearch} className="flex gap-3">
+              <form onSubmit={handleSearch} className="flex gap-3" role="search">
+                <label htmlFor="navbar-search" className="sr-only">Search products</label>
                 <input
-                  type="text"
+                  id="navbar-search"
+                  type="search"
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  placeholder="Search premium collections (e.g. Linen, Joggers)..."
+                  placeholder="Search collections (e.g. Linen, Joggers)..."
                   className="form-control flex-1"
                   autoFocus
                 />
@@ -129,14 +142,15 @@ export default function Navbar() {
           </div>
         )}
 
-        {/* Mobile drawer links */}
+        {/* Mobile drawer */}
         {open && (
           <div className="container-main mt-4 md:hidden animate-fade-in">
             <div className="shadow-soft p-4 flex flex-col gap-2 bg-primary rounded-2xl border border-white/50">
               {[
                 { label: 'Home', to: '/' },
                 { label: 'Collections', to: '/products' },
-                { label: 'Trending', to: '/products?featured=true' }
+                { label: 'Trending', to: '/products?featured=true' },
+                ...(user ? [{ label: 'My Orders', to: '/orders' }] : [])
               ].map(link => (
                 <Link
                   key={link.label}
@@ -151,7 +165,9 @@ export default function Navbar() {
               <div className="border-t border-zinc-300 mt-2 pt-3">
                 {user ? (
                   <div className="flex items-center justify-between px-4 py-2">
-                    <span className="text-xs font-bold text-zinc-800 uppercase">Account: {user.name}</span>
+                    <span className="text-xs font-bold text-zinc-800 uppercase truncate max-w-[160px]">
+                      {user.name}
+                    </span>
                     <button
                       onClick={() => { logout(); setOpen(false) }}
                       className="text-xs font-black uppercase text-red-500 bg-transparent border-none cursor-pointer"

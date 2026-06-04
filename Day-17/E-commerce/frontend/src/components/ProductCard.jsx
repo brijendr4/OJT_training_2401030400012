@@ -1,46 +1,53 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCartDispatch } from '../context/CartContext'
+import toast from 'react-hot-toast'
 import { FaHeart, FaShoppingBag } from 'react-icons/fa'
 
 export default function ProductCard({ product }) {
   const dispatch = useCartDispatch()
   const [size, setSize] = useState(product.sizes?.[0] || '')
-  const [added, setAdded] = useState(false)
   const [wishlist, setWishlist] = useState(false)
 
   function add(e) {
     e.preventDefault()
     dispatch({ type: 'ADD', payload: { product, size, qty: 1 } })
-    setAdded(true)
-    setTimeout(() => setAdded(false), 2000)
+    toast.success(`${product.name} added to cart!`, { duration: 2000 })
+  }
+
+  function toggleWishlist(e) {
+    e.preventDefault()
+    setWishlist(w => !w)
+    // TODO: persist wishlist to backend when user is logged in
+    if (!wishlist) {
+      toast.success('Added to wishlist!', { duration: 1500 })
+    }
   }
 
   const pid = product._id || product.id
 
   return (
-    <div className="shadow-soft shadow-soft-hover p-4 flex flex-col justify-between h-full bg-[#e6e8ec] border border-white/60 relative">
+    <article className="shadow-soft shadow-soft-hover p-4 flex flex-col justify-between h-full bg-[#e6e8ec] border border-white/60 relative">
       
-      {/* Badge container top left */}
+      {/* Featured badge */}
       <div className="absolute top-6 left-6 z-10">
         {product.featured && (
-          <span className="badge badge-dark">
-            Featured
-          </span>
+          <span className="badge badge-dark">Featured</span>
         )}
       </div>
 
-      {/* Wishlist round button */}
+      {/* Wishlist button */}
       <button 
-        onClick={(e) => { e.preventDefault(); setWishlist(!wishlist) }}
+        onClick={toggleWishlist}
         className="absolute top-6 right-6 z-10 btn btn-icon-only btn-pill btn-primary"
-        aria-label="Wishlist toggle"
+        aria-label={wishlist ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
+        aria-pressed={wishlist}
       >
         <FaHeart className={wishlist ? 'text-red-500' : 'text-zinc-400'} />
       </button>
 
       <div>
-        <Link to={`/product/${pid}`} className="no-underline block">
+        <Link to={`/product/${pid}`} className="no-underline block" aria-label={`View ${product.name} details`}>
           <div className="rounded-xl overflow-hidden aspect-[4/5] bg-zinc-200 shadow-inner mb-4 relative p-1.5 border border-white/40">
             <img 
               src={product.image} 
@@ -58,7 +65,7 @@ export default function ProductCard({ product }) {
               {product.name}
             </Link>
           </h3>
-          <span className="font-black text-sm text-zinc-900">${product.price.toFixed(2)}</span>
+          <span className="font-black text-sm text-zinc-900 flex-shrink-0">${product.price.toFixed(2)}</span>
         </div>
 
         <p className="text-zinc-500 text-xs line-clamp-2 leading-relaxed mb-4 px-1 font-semibold">
@@ -66,34 +73,34 @@ export default function ProductCard({ product }) {
         </p>
       </div>
 
-      {/* Options and cart submit button */}
+      {/* Size selector + Add to Cart */}
       <div className="mt-auto px-1">
         <div className="flex items-center gap-2">
           {product.sizes && product.sizes.length > 0 && (
-            <select 
-              value={size} 
-              onChange={e => setSize(e.target.value)} 
-              className="form-control py-2 px-3 text-xs w-20 bg-[#e6e8ec]"
-              aria-label="Select product size"
-            >
-              {product.sizes.map(s => <option key={s} value={s}>{s}</option>)}
-            </select>
+            <>
+              <label htmlFor={`size-${pid}`} className="sr-only">Select size for {product.name}</label>
+              <select 
+                id={`size-${pid}`}
+                value={size} 
+                onChange={e => setSize(e.target.value)} 
+                className="form-control py-2 px-3 text-xs w-20 bg-[#e6e8ec]"
+              >
+                {product.sizes.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </>
           )}
           
           <button 
             onClick={add} 
-            className={`flex-1 btn btn-primary text-[10px] font-black tracking-wider py-2.5 px-3 uppercase transition-all duration-200 cursor-pointer ${
-              added 
-                ? 'shadow-inset text-emerald-600 font-extrabold border-emerald-400' 
-                : 'text-zinc-800 hover:text-zinc-950'
-            }`}
+            className="flex-1 btn btn-primary text-[10px] font-black tracking-wider py-2.5 px-3 uppercase transition-all duration-200 cursor-pointer text-zinc-800 hover:text-zinc-950"
+            aria-label={`Add ${product.name} in size ${size} to cart`}
           >
             <FaShoppingBag className="mr-1.5 text-[10px] inline-block" />
-            {added ? 'Added ✓' : 'Add'}
+            Add to Cart
           </button>
         </div>
       </div>
 
-    </div>
+    </article>
   )
 }

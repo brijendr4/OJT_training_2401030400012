@@ -11,6 +11,7 @@ async function connectRedis() {
   try {
     const client = createClient({
       url: REDIS_URL,
+      RESP: 2, // Explicitly use RESP2 protocol to avoid HELLO command error on older Redis versions
       socket: {
         reconnectStrategy: (retries) => {
           if (retries > 1) {

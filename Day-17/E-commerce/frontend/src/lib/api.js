@@ -1,4 +1,7 @@
-const API_BASE = 'http://localhost:5000/api'
+// Use environment variable so this works in both development and production.
+// In development: set in frontend/.env as VITE_API_URL=http://localhost:5000/api
+// In production: set in your hosting provider's environment variables.
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 
 function getHeaders() {
   const headers = { 'Content-Type': 'application/json' }

@@ -6,20 +6,27 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Name is required'],
     trim: true,
-    minlength: 2,
-    maxlength: 50
+    minlength: [2, 'Name must be at least 2 characters'],
+    maxlength: [50, 'Name must be 50 characters or fewer']
   },
   email: {
     type: String,
     required: [true, 'Email is required'],
     unique: true,
     lowercase: true,
-    trim: true
+    trim: true,
+    match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email address'],
+    index: true    // Explicit index for fast lookups
   },
   password: {
     type: String,
     required: [true, 'Password is required'],
-    minlength: 6
+    minlength: [6, 'Password must be at least 6 characters']
+  },
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user'
   }
 }, { timestamps: true })
 
@@ -35,7 +42,7 @@ userSchema.methods.comparePassword = async function (candidate) {
   return bcrypt.compare(candidate, this.password)
 }
 
-// Remove password from JSON output
+// Remove sensitive fields from JSON output
 userSchema.methods.toJSON = function () {
   const obj = this.toObject()
   delete obj.password
