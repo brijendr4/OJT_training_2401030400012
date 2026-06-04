@@ -1,0 +1,90 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /Resources <<
+/Font << /F1 4 0 R >>
+>> /MediaBox [0 0 612 792] /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 750 >>
+stream
+BT
+/F1 24 Tf
+50 750 Td
+(BRIJENDRA - DEVOPS & CLOUD ENGINEER) Tj
+0 -40 Td
+/F1 12 Tf
+(Senior DevOps Engineer | AWS Certified | Kubernetes Expert) Tj
+0 -30 Td
+/F1 10 Tf
+(Email: brijendra@example.com | Phone: +1 (555) 123-4567) Tj
+0 -15 Td
+(LinkedIn: linkedin.com/in/brijendra | GitHub: github.com/brijendra) Tj
+0 -30 Td
+/F1 12 Tf
+(PROFESSIONAL SUMMARY) Tj
+0 -15 Td
+/F1 10 Tf
+(Experienced DevOps & Cloud Architect with 8+ years designing and implementing) Tj
+0 -12 Td
+(scalable cloud infrastructure, CI/CD pipelines, and containerized solutions.) Tj
+0 -12 Td
+(Proven expertise in AWS, Kubernetes, Terraform, and modern DevOps practices.) Tj
+0 -30 Td
+/F1 12 Tf
+(TECHNICAL SKILLS) Tj
+0 -15 Td
+/F1 10 Tf
+(Cloud Platforms: AWS, Azure, Google Cloud Platform, Kubernetes, Docker) Tj
+0 -12 Td
+(DevOps Tools: Terraform, Jenkins, GitLab CI/CD, GitHub Actions, Ansible) Tj
+0 -12 Td
+(Languages: Python, Go, Bash, JavaScript, Node.js) Tj
+0 -12 Td
+(Monitoring & Logging: Prometheus, Grafana, ELK Stack, Datadog) Tj
+0 -12 Td
+(Infrastructure: Linux, Nginx, Apache, HELM, ArgoCD) Tj
+0 -30 Td
+/F1 12 Tf
+(CERTIFICATIONS) Tj
+0 -15 Td
+/F1 10 Tf
+(AWS Certified Solutions Architect - Professional) Tj
+0 -12 Td
+(Certified Kubernetes Application Developer (CKAD)) Tj
+0 -12 Td
+(HashiCorp Certified: Terraform Associate) Tj
+0 -30 Td
+/F1 12 Tf
+(EXPERIENCE HIGHLIGHTS) Tj
+0 -15 Td
+/F1 10 Tf
+(Designed and deployed Kubernetes clusters supporting 1M+ daily transactions) Tj
+0 -12 Td
+(Implemented CI/CD pipelines reducing deployment time by 70%) Tj
+0 -12 Td
+(Managed multi-region AWS infrastructure with 99.99% uptime) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000240 00000 n 
+0000000313 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1113
+%%EOF
